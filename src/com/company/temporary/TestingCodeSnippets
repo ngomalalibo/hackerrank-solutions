@@ -1,0 +1,39 @@
+// send json to url
+@Test
+void whenValidInput_thenReturns200() throws Exception {
+  UserResource user = new UserResource("Zaphod", "zaphod@galaxy.net");
+
+   mockMvc.perform(post("/forums/{forumId}/register", 42L)
+        .contentType("application/json")
+        .param("sendWelcomeMail", "true")
+        .content(objectMapper.writeValueAsString(user)))
+        .andExpect(status().isOk());
+}
+
+// Argument captor
+@Test
+void whenValidInput_thenMapsToBusinessModel() throws Exception {
+  UserResource user = new UserResource("Zaphod", "zaphod@galaxy.net");
+  mockMvc.perform(...);
+
+  ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
+  verify(registerUseCase, times(1)).registerUser(userCaptor.capture(), eq(true));
+  assertThat(userCaptor.getValue().getName()).isEqualTo("Zaphod");
+  assertThat(userCaptor.getValue().getEmail()).isEqualTo("zaphod@galaxy.net");
+}
+
+
+
+// testing json serialization
+@Test
+void whenValidInput_thenReturnsUserResource() throws Exception {
+  MvcResult mvcResult = mockMvc.perform(...)
+      ...
+      .andReturn();
+
+  UserResource expectedResponseBody = ...;
+  String actualResponseBody = mvcResult.getResponse().getContentAsString();
+
+  assertThat(objectMapper.writeValueAsString(expectedResponseBody))
+      .isEqualToIgnoringWhitespace(actualResponseBody);
+}
