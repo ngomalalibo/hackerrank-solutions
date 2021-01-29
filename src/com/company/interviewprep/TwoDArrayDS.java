@@ -10,7 +10,7 @@ public class TwoDArrayDS
     static int hourglassSum(int[][] arr)
     {
         ArrayList<Integer> sums = new ArrayList<>();
-        int max=0;
+        int max = 0;
         for (int x = 0; x < 6; x++)
         {
             for (int y = 0; y < 6; y++)
@@ -57,9 +57,7 @@ public class TwoDArrayDS
                     max = intSummaryStatistics.getMax();
                 }
             }
-            
         }
-        
         
         return max;
     }
