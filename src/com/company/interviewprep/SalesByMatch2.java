@@ -22,7 +22,6 @@ public class SalesByMatch2
         
         for (int i = 0; i < ar.length; i++)
         {
-            noOfPairs = 0;
             matching = 0;
             if (!checkItems.contains(ar[i]))
             {

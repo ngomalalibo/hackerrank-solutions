@@ -55,10 +55,7 @@ public class RepeatingString2
                     factor = (long) Math.floor(n / sl);
                     aCount = aCount * factor;
                 }
-                
             }
-            
-            
         }
         
         return aCount;
