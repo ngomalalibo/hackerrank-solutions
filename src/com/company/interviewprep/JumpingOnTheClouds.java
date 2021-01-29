@@ -19,12 +19,6 @@ public class JumpingOnTheClouds
         }
         if (1 <= n && n <= 100)
         {
-            // for (int i = 0; i < c.length; i++)
-            // {
-            //     clouds.put(i, c[i]);
-            // }
-            /** 0 0 1 0 0 1 0 */
-            /** 0 0 0 1 0 0 */
             for (int i = 0; i < c.length; i++)
             {
                 if (c[i] == 0)
