@@ -11,19 +11,23 @@ public class ProgrammingScore
         int groupScore = 0;
         int noOfGroups = 0;
         int groupTestCases = 0;
-        int positionOfLastInt = 0;
+        int positionOfLastDigit = 0;
         String groupName;
         String numberOfGroups;
         StringBuilder num = null;
+        //loop through all the test cases
         for (String t : T)
         {
+            //convert the test cases to character arrays
             sc = new ArrayList<>();
             for (char c : t.toCharArray())
             {
                 sc.add(c);
             }
+            
             for (int i = 0; i < sc.size(); ++i)
             {
+                // search the test case letters for the group number. Ignore characters
                 if (Character.isLetter(sc.get(i)))
                 {
                     continue;
@@ -31,10 +35,11 @@ public class ProgrammingScore
                 if (Character.isDigit(sc.get(i)))
                 {
                     num = new StringBuilder();
-                    if (i == sc.size() - 1)
+                    
+                    if (i == sc.size() - 1)  // group number found. Check if it is last digit/letter
                     {
-                        positionOfLastInt = i + 1;
-                        groupName = t.substring(0, positionOfLastInt);
+                        positionOfLastDigit = i + 1;
+                        groupName = t.substring(0, positionOfLastDigit);
                         num.append(sc.get(i).toString());
                         numberOfGroups = num.toString();
                         noOfGroups = Integer.parseInt(numberOfGroups);
@@ -42,17 +47,17 @@ public class ProgrammingScore
                     else
                     {
                         num.append(sc.get(i).toString());
-                        //get number of groups from test case name
-                        for (int j = i + 1; j < sc.size(); j++)
+                        //number of groups is the max number in the test case name.
+                        for (int j = i + 1; j < sc.size(); j++) //continue searching current test case name to ensure digit is last digit
                         {
                             if (Character.isDigit(sc.get(j)))
                             {
-                                positionOfLastInt = j;
+                                positionOfLastDigit = j;
                                 num.append(sc.get(j));
                             }
                             else
                             {
-                                positionOfLastInt = j;
+                                positionOfLastDigit = j;
                                 numberOfGroups = num.toString();
                                 noOfGroups = Integer.parseInt(numberOfGroups);
                                 break;
@@ -61,9 +66,9 @@ public class ProgrammingScore
                     }
                 }
                 /**"test1a", "test2", "test1b", "test1c", "test3"*/
-                groupName = t.substring(0, positionOfLastInt);
-                positionOfLastInt=0;
-                // iterate test cases to get no in group
+                groupName = t.substring(0, positionOfLastDigit); // group name is a substring of the test case name up till the last digit
+                positionOfLastDigit = 0; // reset the digit position
+                // iterate test cases to get number in group name
                 for (int d = 0; d < T.length; d++)
                 {
                     if (T[d].contains(groupName))
@@ -77,7 +82,7 @@ public class ProgrammingScore
                     
                     if (T[d].contains(groupName) || R[d].equals(groupName))
                     {
-                        --groupTestCases;
+                        --groupTestCases; //tracks group test cases as they are checked against the result array
                         if (!R[d].equals("OK"))
                         {
                             groupTestCases = 0;
@@ -90,10 +95,6 @@ public class ProgrammingScore
                         }
                     }
                 }
-                    /*if (R[i].equals("OK"))
-                    {
-                        ++groupScore;
-                    }*/
             }
             
         }
@@ -103,10 +104,10 @@ public class ProgrammingScore
     
     public static void main(String[] args)
     {
-        String[] T = new String[]{"test1a", "test2", "test1b", "test1c", "test3"};
-        String[] R = new String[]{"Wrong answer", "OK", "Runtime error", "OK", "Time limit exceeded"};
-        // String[] T = new String[]{"codility1", "codility3", "codility2", "codility4b", "codility4a"};
-        // String[] R = new String[]{"Wrong answer", "OK", "OK", "Runtime error", "OK"};
+        // String[] T = new String[]{"test1a", "test2", "test1b", "test1c", "test3"};
+        // String[] R = new String[]{"Wrong answer", "OK", "Runtime error", "OK", "Time limit exceeded"};
+        String[] T = new String[]{"codility1", "codility3", "codility2", "codility4b", "codility4a"};
+        String[] R = new String[]{"Wrong answer", "OK", "OK", "Runtime error", "OK"};
         
         int score = score(T, R);
         System.out.println("score --> " + score);
