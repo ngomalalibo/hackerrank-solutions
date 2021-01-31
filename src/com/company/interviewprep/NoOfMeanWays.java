@@ -46,6 +46,10 @@ public class NoOfMeanWays
                             }
                             
                         }
+                        else
+                        {
+                            System.exit(0);
+                        }
                     }
                 }
             }
@@ -62,12 +66,12 @@ public class NoOfMeanWays
     public static void main(String[] args)
     {
         //Testcase 1
-        int[] A = new int[]{2, 1, 3};
-        int s = 2;
+        // int[] A = new int[]{2, 1, 3};
+        // int s = 2;
         
         //Testcase 2
-        // int[] A = new int[]{0, 4, 3, -1};
-        // int s = 2;
+        int[] A = new int[]{0, 4, 3, -1};
+        int s = 2;
         
         //Testcase 3
         // int []A = new int[]{2,1,4};
