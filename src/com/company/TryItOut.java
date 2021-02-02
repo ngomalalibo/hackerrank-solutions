@@ -1,22 +1,53 @@
 package com.company;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class TryItOut
 {
     public static void main(String[] args)
     {
-        String INPUT = new StringBuilder()
-                .append("magic\tproject\n")
-                .append("     database: oracle\n")
-                .append("dependencies:\n")
-                .append("spring:foo:bar\n")
-                .append("\n")  // Note that the input ends with a blank line
-                .toString();
-        Scanner scanner = new Scanner(INPUT);
-        while (scanner.hasNext()) {
-            System.out.println(scanner.next());
-        }
-        System.out.println(("--------OUTPUT--END---------"));
+        List<Tracks> tracks = Arrays.asList(new Tracks("Bakai", 524),
+                                            new Tracks("Violets for Your Furs", 378),
+                                            new Tracks("Time Was", 451));
+        Tracks shortestTrack = tracks.stream()
+                                     .min(Comparator.comparing(Tracks::getLength).thenComparing(Tracks::getTitle))
+                                     .get();
+        System.out.println("result " + shortestTrack.getLength());
     }
+}
+
+class Tracks
+{
+    
+    public Tracks(String title, int length)
+    {
+        this.title = title;
+        this.length = length;
+    }
+    
+    private String title;
+    private int length;
+    
+    public int getLength()
+    {
+        return this.length;
+    }
+    
+    public void setLength(int length)
+    {
+        this.length = length;
+    }
+    
+    public String getTitle()
+    {
+        return this.title;
+    }
+    
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+    
 }
