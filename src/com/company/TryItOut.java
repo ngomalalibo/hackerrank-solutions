@@ -1,20 +1,30 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
 public class TryItOut
 {
     public static void main(String[] args)
     {
-        List<Tracks> tracks = Arrays.asList(new Tracks("Bakai", 524),
+        /*List<Integer> cars = new ArrayList<>();
+        for (int i = 0; i < 10; i++)
+        {
+            cars.add(null);
+        }
+        
+        cars.set(1, 1);
+        cars.set(3, 3);
+        cars.set(5, 5);
+        cars.set(7, 7);
+        System.out.println(cars.toString());*/
+    
+        /*List<Tracks> tracks = Arrays.asList(new Tracks("Bakai", 524),
                                             new Tracks("Violets for Your Furs", 378),
                                             new Tracks("Time Was", 451));
         Tracks shortestTrack = tracks.stream()
                                      .min(Comparator.comparing(Tracks::getLength).thenComparing(Tracks::getTitle))
                                      .get();
-        System.out.println("result " + shortestTrack.getLength());
+        System.out.println("result " + shortestTrack.getLength());*/
+        
+        
     }
 }
 

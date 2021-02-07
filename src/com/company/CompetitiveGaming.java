@@ -7,7 +7,7 @@ public class CompetitiveGaming
     
     public static void storeDup(List<Integer> dups, List<Integer> scores, int n, int i, int j, Map<Integer, List<Integer>> posScores)
     {
-        // check if position (j) exists in posScores before initializing a new array.
+        // check if position (j) exists in position and Scores map before initializing a new array.
         if (posScores.containsKey(j))
         {
             List<Integer> exists = posScores.get(j);
@@ -22,8 +22,38 @@ public class CompetitiveGaming
         
     }
     
-    // static List<Integer> dups = new ArrayList<>();
-    public static int numPlayers(int k, List<Integer> scores)
+    static int numPlayers(int k, List<Integer> n)
+    {
+        n.sort(Collections.reverseOrder());
+        
+        int canLevelUp = 0; // holds no of players levelling up
+        int checkedValue = Integer.MIN_VALUE; // holds previously checked player score
+        int rank = 1; // initial rank
+        
+        for (int i = 0; i < n.size(); i++)
+        {
+            if (checkedValue != Integer.MIN_VALUE && checkedValue != n.get(i))
+            {
+                rank = i + 1;
+            }
+            // check if player rank is within level up rank and if player score is > 0
+            if (rank <= k && n.get(i) > 0)
+            {
+                canLevelUp++;
+            }
+            else
+            {
+                break; // if current player score is 0 or rank level has been exceeded efficiently break out of loop for
+            }
+            // if player is ranked then check him against next player
+            checkedValue = n.get(i);
+        }
+        
+        return canLevelUp;
+    }
+    
+    // Also works
+    /*public static int numPlayers(int k, List<Integer> scores)
     {
         // reverse sort scores to get highest to lowest
         scores.sort(Comparator.reverseOrder());
@@ -38,7 +68,11 @@ public class CompetitiveGaming
         for (int i = 0, j = 1; i < n; i++, j++)
         {
             List<Integer> dups = new ArrayList<>();
-            /**  100, 50, 50, 25 */
+            */
+    
+    /**
+     * 100, 50, 50, 25
+     *//*
             if (i == 0)
             {
                 storeDup(dups, scores, n, i, j, posScores);
@@ -73,8 +107,7 @@ public class CompetitiveGaming
             numPlayers += integers.size();
         }
         return numPlayers;
-    }
-    
+    }*/
     public static void main(String[] args)
     {
         Scanner in = new Scanner(System.in);
@@ -90,3 +123,23 @@ public class CompetitiveGaming
         System.out.println("numPlayer -> " + i);
     }
 }
+
+/*
+Sample Input 1
+ 4
+ 5
+ 20
+ 40
+ 60
+ 80
+ 100
+ 
+ Sample Input 2
+ 3
+ 4
+ 25
+ 50
+ 50
+ 100
+ *
+ **/
