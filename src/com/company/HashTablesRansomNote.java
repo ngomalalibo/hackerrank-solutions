@@ -16,8 +16,10 @@ public class HashTablesRansomNote
         for (String m : magazine)
         {
             // magCount = (int)Arrays.stream(magazine).filter(d -> d.equals(m)).count(); // Not effecient
+            // Effeciently uses the map to create/update itself
             if (magMap.containsKey(m))
             {
+                
                 magCount = magMap.get(m);
                 magMap.put(m, ++magCount);
             }

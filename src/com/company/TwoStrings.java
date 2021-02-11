@@ -12,18 +12,23 @@ public class TwoStrings
     static String twoStrings(String s1, String s2)
     {
         //ensure s1 is the longer string
-        String call = "NO";
         Set<Character> s1Set = new HashSet<>(Arrays.asList(s1.chars().mapToObj(c -> (char) c).toArray(Character[]::new)));
         Set<Character> s2Set = new HashSet<>(Arrays.asList(s2.chars().mapToObj(c -> (char) c).toArray(Character[]::new)));
         
-        for (Character c : s2Set)
+        s2Set.retainAll(s1Set);// intersection of two sets. Return all the elements that appear in both sets
+        if (!s2Set.isEmpty())
+        {
+            return "YES";
+        }
+        return "NO";
+        
+        /*for (Character c : s2Set)
         {
             if (s1Set.contains(c))
             {
-                call = "YES";
+                return "YES";
             }
-        }
-        return call;
+        }*/
     }
     
     private static final Scanner scanner = new Scanner(System.in);

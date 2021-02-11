@@ -1,9 +1,35 @@
 package com.company;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class TryItOut
 {
     public static void main(String[] args)
     {
+       
+       /* int count = 0;
+        Map<Integer, Character> dd = new HashMap<>()
+        {{
+            put(1, 'i');
+            put(2, 'f');
+            put(3, 'a');
+        }};
+        Map<Integer, Character> ss = new HashMap<>()
+        {{
+            put(1, 'f');
+            put(2, 'a');
+            put(3, 'i');
+        }};
+        
+        if(Arrays.equals(dd.values().stream().sorted().toArray(), dd.values().stream().sorted().toArray()))
+        {
+            count++;
+        }*/
+        
+        
+        
         /*List<Integer> cars = new ArrayList<>();
         for (int i = 0; i < 10; i++)
         {
