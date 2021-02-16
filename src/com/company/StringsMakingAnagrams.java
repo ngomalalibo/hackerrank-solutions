@@ -69,7 +69,7 @@ public class StringsMakingAnagrams
             int aaas = aMap.get(c);
             totalCount += aaas;
         }
-    // count characters in the b difference and add to total
+        // count characters in the b difference and add to total
         for (Character c : bMapClone.keySet())
         {
             int bees = bMap.get(c);
@@ -77,7 +77,7 @@ public class StringsMakingAnagrams
         }
         
         
-        // get distince characters
+        // get distinct characters
         Set<Character> aSet = new HashSet<>(aMap.keySet());
         Set<Character> bSet = new HashSet<>(bMap.keySet());
         // get character intersect of a and b characters
@@ -87,7 +87,7 @@ public class StringsMakingAnagrams
         {
             int bees = bMap.get(c);
             int aaas = aMap.get(c);
-    
+            
             int abs = Math.abs(bees - aaas);
             totalCount += abs;
         }

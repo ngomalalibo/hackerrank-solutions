@@ -8,7 +8,7 @@ public class TryItOut
 {
     public static void main(String[] args)
     {
-       
+        System.out.println(3%1);
        /* int count = 0;
         Map<Integer, Character> dd = new HashMap<>()
         {{
