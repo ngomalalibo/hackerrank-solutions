@@ -38,7 +38,6 @@ public class SortingBubbleSort
             }
             n--;
         }
-        //System.out.println(Arrays.toString(a));
         int first = a[0];
         System.out.println("Array is sorted in " + numSwaps + " swaps.");
         System.out.println("First Element: " + first);
