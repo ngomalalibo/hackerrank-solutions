@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
+// Same question with SortingComparator
 class Checker implements Comparator<Player>
 {
     
@@ -16,15 +17,15 @@ class Checker implements Comparator<Player>
         boolean o2containsLetter = false;
         if (0 <= o1.score && o1.score <= 1000 && 0 <= o2.score && o2.score <= 1000)
         {
-            for(int i=0; i<o1.name.length();i++)
+            for (int i = 0; i < o1.name.length(); i++)
             {
                 o1containsLetter = o1.name.chars().anyMatch(Character::isLetter);
             }
-            for(int i=0; i<o2.name.length();i++)
+            for (int i = 0; i < o2.name.length(); i++)
             {
                 o2containsLetter = o2.name.chars().anyMatch(Character::isLetter);
             }
-            if(o1containsLetter && o2containsLetter)
+            if (o1containsLetter && o2containsLetter)
             {
                 compare = Integer.compare(o2.score, o1.score);
                 if (compare == 0)
