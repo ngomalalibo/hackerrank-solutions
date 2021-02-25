@@ -20,9 +20,10 @@ public class SortingBubbleSort
             {
                 if (a[j] > a[j + 1])
                 {
-                    int temp = a[j];
+                    swap(a, j,j+1);
+                    /*int temp = a[j];
                     a[j] = a[j + 1];
-                    a[j + 1] = temp;
+                    a[j + 1] = temp;*/
                     count++;
                     numSwaps++;
                     sorted = false;
@@ -42,6 +43,17 @@ public class SortingBubbleSort
         System.out.println("Array is sorted in " + numSwaps + " swaps.");
         System.out.println("First Element: " + first);
         System.out.println("Last Element: " + last);
+    }
+    
+    public static void swap(int[] array, int a, int b)
+    {
+        if (a == b)
+        {
+            return;
+        }
+        int temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
     }
     
     private static final Scanner scanner = new Scanner(System.in);
