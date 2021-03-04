@@ -1,14 +1,26 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 public class TryItOut
 {
     public static void main(String[] args)
     {
-        System.out.println(3/2);
+        
+        /*BigInteger i = new BigInteger("1000000000000000000000000000001");
+        System.out.println(i);*/
+        /*char c='a';
+        char c2='1';
+        int a=c;
+        int b=c2;
+        System.out.println(a);
+        System.out.println(b);*/
+        /*List<Integer> iceCream = new ArrayList<>();
+        iceCream.add(1);
+        iceCream.add(2);
+        for (int i = 0; i< iceCream.size(); i++)
+        {
+            System.out.println(iceCream.get(i));
+        }*/
+       
        /* int count = 0;
         Map<Integer, Character> dd = new HashMap<>()
         {{
