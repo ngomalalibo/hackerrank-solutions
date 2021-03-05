@@ -10,7 +10,7 @@ import java.util.Set;
 public class FreeCalendarSlots
 {
     /**
-     *  Given two peoples calenders and their start and end bounds within which they can schedule meetings in a day. Return free slots where they can schedule meetings with each other.
+     * Given two peoples calenders and their start and end bounds within which they can schedule meetings in a day. Return free slots where they can schedule meetings with each other.
      * // Return list of available slots when meetings can be held
      * // Sample Input
      * // [['9:00', '10:30'], ['12:00', '13:00'], ['16:00', '18:00']]
@@ -37,43 +37,41 @@ public class FreeCalendarSlots
         Set<LocalTime> takenTimes1 = getTakenTimes(c1);
         Set<LocalTime> takenTimes2 = getTakenTimes(c2);
         takenTimes1.addAll(takenTimes2);
-       
+        
         allTimes.removeAll(takenTimes1);
         
         List<Slot> freeSlots = new ArrayList<>();
         LocalTime startTime = LocalTime.MIN;
-        LocalTime prevTime = LocalTime.MAX;
+        LocalTime timeCursor = LocalTime.MAX;
         
         List<LocalTime> allTimesList = new ArrayList<>(allTimes);
         LocalTime time;
         
-        for (int i = 0; i < allTimes.size(); i++)
+        for (int i = 0; i < allTimesList.size(); i++)
         {
             time = allTimesList.get(i);
             if (startTime.equals(LocalTime.MIN))
             {
                 startTime = time;
-                prevTime = time;
+                timeCursor = time;
                 continue;
             }
-            if (prevTime.plusMinutes(30).equals(time))
+            if (timeCursor.plusMinutes(30).equals(time))
             {
-                prevTime = time;
+                timeCursor = time;
                 continue;
             }
             else
             {
-                freeSlots.add(new Slot(startTime, prevTime.plusMinutes(30)));
+                freeSlots.add(new Slot(startTime, timeCursor.plusMinutes(30)));
                 startTime = time;
-                prevTime = time;
-                if (i == allTimes.size()-1)
+                timeCursor = time;
+                if (i == allTimesList.size() - 1)
                 {
                     freeSlots.add(new Slot(startTime, time.plusMinutes(30)));
                     break;
                 }
             }
-    
-            
         }
         return freeSlots;
     }
@@ -150,7 +148,6 @@ class Slot
     public String toString()
     {
         return
-                "['" + start +
-                        "', '" + end + "']";
+                "['" + start + "', '" + end + "']";
     }
 }
