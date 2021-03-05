@@ -44,7 +44,6 @@ public class TreeTraversalDecryption
         CharTree tree = new CharTree(root);
         String result = tree.traverse();
         System.out.println(result);
-        
     }
 }
 
