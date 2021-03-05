@@ -151,6 +151,6 @@ class Slot
     {
         return
                 "['" + start +
-                        ", " + end + "']";
+                        "', '" + end + "']";
     }
 }
