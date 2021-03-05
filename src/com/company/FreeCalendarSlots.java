@@ -10,18 +10,18 @@ import java.util.Set;
 public class FreeCalendarSlots
 {
     /**
-     * Given two peoples calenders and their start and end bounds within which they can schedule meetings in a day. Return free slots where they can schedule meetings with each other.
-     * // Return list of available slots when meetings can be held
+     * Given the calendars of two individuals and their start and end bounds within which they can schedule meetings in a work day. Return free slots where they can schedule meetings with each other.
+     * // Return list of available slots when meetings between them can be held between them
      * // Sample Input
      * // [['9:00', '10:30'], ['12:00', '13:00'], ['16:00', '18:00']]
      * // Bounds: ['9:00', '20:00']
      * // [['10:00', '11:30'], ['12:30', '14:30'], ['14:30', '15:00'], ['16:00', '17:00']]
      * // Bounds: ['10:00', '18:30']
-     * // 30
+     * // Duration: 30
      * // Sample Output: [['11:30', '12:00'], ['15:00', '16:00'], ['18:00', '18:30']]
      */
     
-    public static List<Slot> freeSlots(List<Slot> c1, Slot b1, List<Slot> c2, Slot b2)
+    public static List<Slot> freeSlots(List<Slot> c1, Slot b1, List<Slot> c2, Slot b2, long duration)
     {
         LocalTime startBound = b1.getStart().isAfter(b2.getStart()) ? b1.getStart() : b2.getStart();
         LocalTime endBound = b1.getEnd().isBefore(b2.getEnd()) ? b1.getEnd() : b2.getEnd();
@@ -31,7 +31,7 @@ public class FreeCalendarSlots
         while (current.compareTo(endBound) != 0)
         {
             allTimes.add(current);
-            current = current.plusMinutes(30);
+            current = current.plusMinutes(duration);
         }
         
         Set<LocalTime> takenTimes1 = getTakenTimes(c1);
@@ -45,30 +45,30 @@ public class FreeCalendarSlots
         LocalTime timeCursor = LocalTime.MAX;
         
         List<LocalTime> allTimesList = new ArrayList<>(allTimes);
-        LocalTime time;
+        LocalTime currentTime;
         
         for (int i = 0; i < allTimesList.size(); i++)
         {
-            time = allTimesList.get(i);
+            currentTime = allTimesList.get(i);
             if (startTime.equals(LocalTime.MIN))
             {
-                startTime = time;
-                timeCursor = time;
+                startTime = currentTime;
+                timeCursor = currentTime;
                 continue;
             }
-            if (timeCursor.plusMinutes(30).equals(time))
+            if (timeCursor.plusMinutes(duration).equals(currentTime))
             {
-                timeCursor = time;
+                timeCursor = currentTime;
                 continue;
             }
             else
             {
-                freeSlots.add(new Slot(startTime, timeCursor.plusMinutes(30)));
-                startTime = time;
-                timeCursor = time;
+                freeSlots.add(new Slot(startTime, timeCursor.plusMinutes(duration)));
+                startTime = currentTime;
+                timeCursor = currentTime;
                 if (i == allTimesList.size() - 1)
                 {
-                    freeSlots.add(new Slot(startTime, time.plusMinutes(30)));
+                    freeSlots.add(new Slot(startTime, currentTime.plusMinutes(duration)));
                     break;
                 }
             }
@@ -106,7 +106,9 @@ public class FreeCalendarSlots
         c1.add(new Slot(LocalTime.of(16, 0), LocalTime.of(17, 0)));
         Slot c12Bounds = new Slot(LocalTime.of(10, 0), LocalTime.of(18, 30));
         
-        List<Slot> freeSlots = freeSlots(c1, c1Bounds, c2, c12Bounds);
+        long duration = 30;
+        
+        List<Slot> freeSlots = freeSlots(c1, c1Bounds, c2, c12Bounds, duration);
         
         System.out.println(freeSlots.toString());
     }
