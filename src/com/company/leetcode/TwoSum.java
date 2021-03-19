@@ -54,7 +54,7 @@ public class TwoSum
         
         int[] res = twoSum(arr, target);
         
-        System.out.println("res -> " + Arrays.toString(res));
+        System.out.println(Arrays.toString(res));
         
         scanner.close();
     }

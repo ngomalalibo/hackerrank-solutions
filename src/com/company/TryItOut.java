@@ -4,7 +4,7 @@ public class TryItOut
 {
     public static void main(String[] args)
     {
-        
+        System.out.println(0-(-1));
         /*BigInteger i = new BigInteger("1000000000000000000000000000001");
         System.out.println(i);*/
         /*char c='a';

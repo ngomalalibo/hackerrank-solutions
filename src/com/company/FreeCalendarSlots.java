@@ -91,24 +91,49 @@ public class FreeCalendarSlots
         return taken;
     }
     
+    public static int[] getTimes(String ss)
+    {
+        String[] s1 = ss.split(":");
+        int i1 = Integer.parseInt(s1[0]);
+        int i2 = Integer.parseInt(s1[1]);
+        
+        return new int[]{i1, i2};
+    }
+    
+    public static List<Slot> getSlots(String[][] times)
+    {
+        List<Slot> c = new ArrayList<>();
+        
+        for (int i = 0; i < times.length; i++)
+        {
+            int[] start = getTimes(times[i][0]);
+            int[] end = getTimes(times[i][1]);
+            c.add(new Slot(LocalTime.of(start[0], start[1]), LocalTime.of(end[0], end[1])));
+        }
+        return c;
+    }
+    
     public static void main(String[] args)
     {
-        List<Slot> c1 = new ArrayList<>();
-        c1.add(new Slot(LocalTime.of(9, 0), LocalTime.of(10, 30)));
-        c1.add(new Slot(LocalTime.of(12, 0), LocalTime.of(13, 0)));
-        c1.add(new Slot(LocalTime.of(16, 0), LocalTime.of(18, 0)));
-        Slot c1Bounds = new Slot(LocalTime.of(9, 0), LocalTime.of(20, 0));
+        String[][] times1 = new String[][]{{"9:00", "10:30"}, {"12:00", "13:00"}, {"16:00", "18:00"}};
+        String[][] times2 = new String[][]{{"10:00", "11:30"}, {"12:30", "14:30"}, {"14:30", "15:00"}, {"16:00", "17:00"}};
+        String[] bound1 = new String[]{"9:00", "20:00"};
+        String[] bound2 = new String[]{"10:00", "18:30"};
         
-        List<Slot> c2 = new ArrayList<>();
-        c1.add(new Slot(LocalTime.of(10, 0), LocalTime.of(11, 30)));
-        c1.add(new Slot(LocalTime.of(12, 30), LocalTime.of(14, 30)));
-        c1.add(new Slot(LocalTime.of(14, 30), LocalTime.of(15, 0)));
-        c1.add(new Slot(LocalTime.of(16, 0), LocalTime.of(17, 0)));
-        Slot c12Bounds = new Slot(LocalTime.of(10, 0), LocalTime.of(18, 30));
+        List<Slot> c1 = getSlots(times1);
+        List<Slot> c2 = getSlots(times2);
+        
+        int[] boundStart = getTimes(bound1[0]);
+        int[] boundEnd = getTimes(bound1[1]);
+        Slot c1Bounds = new Slot(LocalTime.of(boundStart[0], boundStart[1]), LocalTime.of(boundEnd[0], boundEnd[1]));
+        
+        boundStart = getTimes(bound2[0]);
+        boundEnd = getTimes(bound2[1]);
+        Slot c2Bounds = new Slot(LocalTime.of(boundStart[0], boundStart[1]), LocalTime.of(boundEnd[0], boundEnd[1]));
         
         long duration = 30;
         
-        List<Slot> freeSlots = freeSlots(c1, c1Bounds, c2, c12Bounds, duration);
+        List<Slot> freeSlots = freeSlots(c1, c1Bounds, c2, c2Bounds, duration);
         
         System.out.println(freeSlots.toString());
     }
