@@ -4,7 +4,8 @@ public class TryItOut
 {
     public static void main(String[] args)
     {
-        System.out.println(0-(-1));
+        int d = 13;
+        System.out.println(d < 12 ? "Morning" : d < 16 ? "Afternoon" : "Evening");
         /*BigInteger i = new BigInteger("1000000000000000000000000000001");
         System.out.println(i);*/
         /*char c='a';
