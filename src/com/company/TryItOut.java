@@ -1,11 +1,22 @@
 package com.company;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class TryItOut
 {
     public static void main(String[] args)
     {
-        int d = 13;
-        System.out.println(d < 12 ? "Morning" : d < 16 ? "Afternoon" : "Evening");
+        Set<Integer> coins = new HashSet<>(Arrays.asList(11, 9, 7, 5, 1));
+        Set<Integer> collect = coins.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toCollection(LinkedHashSet::new));
+        System.out.println(collect);
+        /*int d = 100111;
+        for (int i = 0; i < 6; i++)
+        {
+            System.out.println(d & 1);
+            d>>=1;
+        }*/
+        // System.out.println(d < 12 ? "Morning" : d < 16 ? "Afternoon" : "Evening");
         /*BigInteger i = new BigInteger("1000000000000000000000000000001");
         System.out.println(i);*/
         /*char c='a';

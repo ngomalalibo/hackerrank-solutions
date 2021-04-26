@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//Palindrome
 public class SimplePasswordToRemember
 {
     public static boolean isSimplePasscode(String pwd)
@@ -12,7 +13,7 @@ public class SimplePasswordToRemember
         // for (int i=0;i<pwd.length();i++)
         int leng = pwd.length();
         int i = 0;
-        int j = leng-1;
+        int j = leng - 1;
         
         while (i <= j)
         {
