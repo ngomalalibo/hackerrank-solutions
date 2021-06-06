@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Combination - Permutation
 class GFG
 {
     static Map<Integer, List<Integer>> dd = new HashMap<>();

@@ -7,9 +7,12 @@ public class TryItOut
 {
     public static void main(String[] args)
     {
-        Set<Integer> coins = new HashSet<>(Arrays.asList(11, 9, 7, 5, 1));
+        System.out.println('\0');
+        // System.out.println(-1000+-1000+-1000);
+        /*System.out.println("  ".chars().boxed().collect(Collectors.toSet()).size());*/
+       /* Set<Integer> coins = new HashSet<>(Arrays.asList(11, 9, 7, 5, 1));
         Set<Integer> collect = coins.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toCollection(LinkedHashSet::new));
-        System.out.println(collect);
+        System.out.println(collect);*/
         /*int d = 100111;
         for (int i = 0; i < 6; i++)
         {
