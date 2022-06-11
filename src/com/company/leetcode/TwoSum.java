@@ -5,9 +5,36 @@ import java.util.Scanner;
 
 public class TwoSum
 {
-    public static int[] twoSum(int[] nums, int target)
+    // practice solved
+    public static int[] twoSum(int[] arr, int target)
     {
-        /** Input: nums = [2,7,11,15], target = 9 */
+        int[] sum = new int[2];
+        int leng = arr.length;
+        boolean found = false;
+        for (int i = 0; i < leng; i++)
+        {
+            for (int j = i + 1; j < leng; j++)
+            {
+                if (found)
+                {
+                    break;
+                }
+                if (arr[i] + arr[j] == target)
+                {
+                    sum[0] = i;
+                    sum[1] = j;
+                    found = true;
+                    break;
+                }
+            }
+            
+        }
+        
+        return sum;
+    }
+    /*public static int[] twoSum(int[] nums, int target)
+    {
+        //Input: nums = [2,7,11,15], target = 9
         int[] sum = new int[2];
         boolean pass = false;
         for (int i = 0; i < nums.length; i++)
@@ -32,7 +59,7 @@ public class TwoSum
             }
         }
         return sum;
-    }
+    }*/
     
     private static final Scanner scanner = new Scanner(System.in);
     

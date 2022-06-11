@@ -2,7 +2,31 @@ package com.company.leetcode;
 
 public class MaximumProductArray
 {
-    public static int maxProduct(int[] arr)
+    public static int maxProduct(int[] A)
+    {
+        int n = A.length;
+        if (n == 1)
+        {
+            return A[0];
+        }
+        
+        int max, prod, negProd, currProd;
+        max = negProd = prod = A[0];
+        
+        for (int i = 1; i < n; i++)
+        {
+            currProd = prod * A[i];
+            prod = Math.max(A[i], Math.max(currProd, negProd * A[i]));
+            negProd = Math.min(A[i], Math.min(currProd, negProd * A[i]));   //for next iteration
+            
+            if (prod > max)
+            {
+                max = prod;
+            }
+        }
+        return max;
+    }
+    /*public static int maxProduct(int[] arr)
     {
         int maxProd = Integer.MIN_VALUE;
         
@@ -16,12 +40,14 @@ public class MaximumProductArray
             }
         }
         return maxProd;
-    }
+    }*/
     
     public static void main(String[] args)
     {
-        // int[] arr = new int[]{2, 3, -2, 4};
-        int[] arr = new int[]{-2};
-        System.out.println(maxProduct(arr));
+        System.out.println(maxProduct(new int[]{2, 3, -2, 4}));
+        System.out.println(maxProduct(new int[]{-2}));
+        System.out.println(maxProduct(new int[]{0, 2}));
+        System.out.println(maxProduct(new int[]{3, -1, 4}));
+        System.out.println(maxProduct(new int[]{-2, 3, -4}));
     }
 }

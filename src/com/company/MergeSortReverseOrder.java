@@ -7,8 +7,6 @@ public class MergeSortReverseOrder
     // recursive merge sort. stable sort
     public static void mergeSort(int[] array, int start, int end)
     {
-        
-        
         if (end - start < 2)
         {
             return;

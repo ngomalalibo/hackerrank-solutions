@@ -122,6 +122,8 @@ public class DMaximumPairs
         }
     }
     
+    
+    
     public static void wash(Colors sock)
     {
         Long noOfDirtySock = dirtySockTotalMap.get(sock); // get total dirty socks for selected color from map

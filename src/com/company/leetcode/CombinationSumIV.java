@@ -10,11 +10,11 @@ public class CombinationSumIV
         {
             for (int i = 0; i < nums.length; i++)
             {
-                System.out.println("numi "+nums[i]);
+                System.out.println("numi " + nums[i]);
                 if (nums[i] <= tar)
                 {
                     dp[tar] += dp[tar - nums[i]];
-                    System.out.println("dptar: "+dp[tar]);
+                    System.out.println("dptar: " + dp[tar]);
                 }
             }
         }

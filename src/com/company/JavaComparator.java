@@ -7,8 +7,6 @@ import java.util.Scanner;
 // Same question with SortingComparator
 class Checker implements Comparator<Player>
 {
-    
-    
     @Override
     public int compare(Player o1, Player o2)
     {
