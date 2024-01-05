@@ -13,7 +13,7 @@ public class CharacterCount
         
         return s.length();
         /*String[] ss = s.split("\\s+");
-        int count = ss.length - 1;
+        int count = ss.le ngth - 1;
         
         for (int i = 0; i < ss.length; i++)
         {
